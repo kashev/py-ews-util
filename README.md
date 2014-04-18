@@ -4,6 +4,8 @@ py-ews-util
     Kashev Dalmia
     kashev.dalmia@gmail.com
 
+![A screenshot of py-ews-util in action](https://raw.githubusercontent.com/kashev/py-ews-util/master/screenshot.png "A screenshot of py-ews-util in action")
+
 A short python script for displaying EWS Lab Utilization at the University of Illinois at Urbana-Champaign. Uses the JSON data URL utilized by the web utilization count on [the EWS website](http://it.engineering.illinois.edu/ews/), and code similar to the Javascript on that website.
 
 Use case for this script is to not have to open up a web browser to see if you can get a spot in an EWS Lab. No more, no less.
