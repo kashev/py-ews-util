@@ -11,13 +11,16 @@ import urllib2
 import json
 import os
 
-# EWS API VARIALBLES
+# EWS API VARIABLES
 # if the EWS API changes, these too might need to change.
 ews_url      = 'https://my.engr.illinois.edu/labtrack/util_data_json.asp'
 data_string  = 'data'
 use_string   = 'inusecount'
 total_string = 'machinecount'
 lab_string   = 'strlabname'
+# PRINT CONSTANTS
+bar_width = 40
+
 
 resp = urllib2.urlopen(ews_url)
 html = resp.read()
@@ -31,8 +34,19 @@ maxlen_use = max([len(str(lab[use_string])) for lab in data])
 maxlen_tot = max([len(str(lab[total_string])) for lab in data])
 
 for lab in data:
+    percentage = (1.0* lab[use_string]) / lab[total_string]
+    bar = '['
+    for i in range(bar_width):
+        if (1.0 * i ) / lab[total_string] < percentage:
+            bar += '='
+        else:
+            bar += ' '
+    bar += ']'
+
+
     print lab[lab_string].ljust(maxlen_lab, ' '), \
           ':', \
+          bar, \
           str(lab[use_string]).ljust(maxlen_use, ' '), \
           '/', \
           str(lab[total_string]).ljust(maxlen_tot, ' ')
