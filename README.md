@@ -33,5 +33,6 @@ $(document).ready(function(){
     });
 });
 ```
+## About the Author
 
-
+[Kashev Dalmia](http://kashevdalmia.com) is an Electrical and Computer Engineering student at the University of Illinois, and will have frequented the EWS labs for six years by the time he is through with them.
