@@ -4,7 +4,15 @@ py-ews-util
     Kashev Dalmia
     kashev.dalmia@gmail.com
 
-A short python script for displaying EWS Lab Utilization at the University of Illinois at Urbana Champaign. Uses the JSON data URL utilized by the web utilization count on [the EWS website](http://it.engineering.illinois.edu/ews/), and code similar to the Javascript on that website:
+A short python script for displaying EWS Lab Utilization at the University of Illinois at Urbana-Champaign. Uses the JSON data URL utilized by the web utilization count on [the EWS website](http://it.engineering.illinois.edu/ews/), and code similar to the Javascript on that website.
+
+Use case for this script is to not have to open up a web browser to see if you can get a spot in an EWS Lab. No more, no less.
+
+## Usage
+
+This script doesn't take any arguments. Run it wherever Python 2 is.
+
+## The Original EWS Javascript Code
 
 ```Javascript
 $(document).ready(function(){
@@ -26,5 +34,4 @@ $(document).ready(function(){
 });
 ```
 
-Use case for this script is to not have to open up a web browser to see if you can get a spot in an EWS Lab. No more, no less.
 
