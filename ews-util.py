@@ -35,14 +35,10 @@ maxlen_tot = max([len(str(lab[total_string])) for lab in data])
 
 for lab in data:
     percentage = (1.0* lab[use_string]) / lab[total_string]
-    bar = '['
-    for i in range(bar_width):
-        if (1.0 * i ) / lab[total_string] < percentage:
-            bar += '='
-        else:
-            bar += ' '
-    bar += ']'
 
+    fill = ['=' if (1.0 * i ) / bar_width < percentage else ' ' for i in range(bar_width)]
+
+    bar = '[' + ''.join(fill) + ']'
 
     print lab[lab_string].ljust(maxlen_lab, ' '), \
           ':', \
