@@ -29,11 +29,16 @@ def getJsonFromEWS(url):
     data = json_response[data_string] # specific to the EWS API
     return data
 
+def getBarString(fraction, width=40):
+    fill = ['=' if (1.0 * i ) / width < fraction else ' ' for i in range(width)]
+    bar  = '[' + ''.join(fill) + ']';
+    return bar
+
 def pprintLabData(data):
     """
     Given the JSON object to lab data, pretty prints it with nice bar graph utilization.
     """
-    # PRINT CONSTANTS
+    # Print Constants
     bar_width = 40
     
     # Pretty Printing
@@ -42,15 +47,9 @@ def pprintLabData(data):
     maxlen_tot = max([len(str(lab[total_string])) for lab in data])
 
     for lab in data:
-        percentage = (1.0* lab[use_string]) / lab[total_string]
-
-        fill = ['=' if (1.0 * i ) / bar_width < percentage else ' ' for i in range(bar_width)]
-
-        bar = '[' + ''.join(fill) + ']'
-
         print lab[lab_string].ljust(maxlen_lab, ' '), \
               ':', \
-              bar, \
+              getBarString((1.0* lab[use_string]) / lab[total_string], bar_width), \
               str(lab[use_string]).ljust(maxlen_use, ' '), \
               '/', \
               str(lab[total_string]).ljust(maxlen_tot, ' ')
