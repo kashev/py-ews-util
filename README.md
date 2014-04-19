@@ -12,7 +12,7 @@ Use case for this script is to not have to open up a web browser to see if you c
 
 ## Usage
 
-This script doesn't take any arguments. Run it wherever Python 2 is.
+This script doesn't take any arguments. Run it wherever Python (2 or 3) is. Tested with Python 2.7.6 and 3.4.0 on a Windows 8.1 machine.
 
 ## The Original EWS Javascript Code
 
