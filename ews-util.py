@@ -11,7 +11,13 @@ from __future__ import print_function
 from __future__ import division
 
 # IMPORTS
-import urllib2
+try:
+    # For Python 3.0 and later
+    from urllib.request import urlopen
+except ImportError:
+    # Fall back to Python 2's urllib2
+    from urllib2 import urlopen
+
 import json
 
 # EWS API VARIABLES
@@ -26,8 +32,8 @@ def getJsonFromEWS(url):
     """
     given a URL to the EWS JSON API, gets the JSON object containing lab data.
     """
-    resp = urllib2.urlopen(ews_url)
-    html = resp.read()
+    resp = urlopen(ews_url)
+    html = resp.read().decode('utf-8')
 
     json_response = json.loads(html)
     data = json_response[data_string] # specific to the EWS API
@@ -56,7 +62,7 @@ def pprintLabData(data):
                 getBarString(lab[use_string] / lab[total_string], bar_width),
                 str(lab[use_string]).ljust(maxlen_use, ' '),
                 '/',
-                str(lab[total_string]).ljust(maxlen_tot, ' ') )
+                str(lab[total_string]).ljust(maxlen_tot, ' '))
 
 def main():
     data = getJsonFromEWS(ews_url)
