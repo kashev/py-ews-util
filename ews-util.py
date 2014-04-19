@@ -58,11 +58,13 @@ def pprintLabData(data):
 
     for lab in data:
         print ( lab[lab_string].ljust(maxlen_lab, ' '),
-                ':',
+                ' : ',
                 getBarString(lab[use_string] / lab[total_string], bar_width),
+                ' ',
                 str(lab[use_string]).ljust(maxlen_use, ' '),
                 '/',
-                str(lab[total_string]).ljust(maxlen_tot, ' '))
+                str(lab[total_string]).ljust(maxlen_tot, ' '),
+                sep='')
 
 def main():
     data = getJsonFromEWS(ews_url)
