@@ -61,7 +61,7 @@ def pprintLabData(data):
                 ' : ',
                 getBarString(lab[use_string] / lab[total_string], bar_width),
                 ' ',
-                str(lab[use_string]).ljust(maxlen_use, ' '),
+                str(lab[use_string]).rjust(maxlen_use, ' '),
                 '/',
                 str(lab[total_string]).ljust(maxlen_tot, ' '),
                 sep='')
