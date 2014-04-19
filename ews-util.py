@@ -6,6 +6,10 @@
 
 # ews-util.py
 
+# Support both Python 2 and 3
+from __future__ import print_function
+from __future__ import division
+
 # IMPORTS
 import urllib2
 import json
@@ -30,7 +34,7 @@ def getJsonFromEWS(url):
     return data
 
 def getBarString(fraction, width=40):
-    fill = ['=' if (1.0 * i ) / width < fraction else ' ' for i in range(width)]
+    fill = ['=' if i / width < fraction else ' ' for i in range(width)]
     bar  = '[' + ''.join(fill) + ']';
     return bar
 
@@ -47,12 +51,12 @@ def pprintLabData(data):
     maxlen_tot = max([len(str(lab[total_string])) for lab in data])
 
     for lab in data:
-        print lab[lab_string].ljust(maxlen_lab, ' '), \
-              ':', \
-              getBarString((1.0* lab[use_string]) / lab[total_string], bar_width), \
-              str(lab[use_string]).ljust(maxlen_use, ' '), \
-              '/', \
-              str(lab[total_string]).ljust(maxlen_tot, ' ')
+        print ( lab[lab_string].ljust(maxlen_lab, ' '),
+                ':',
+                getBarString(lab[use_string] / lab[total_string], bar_width),
+                str(lab[use_string]).ljust(maxlen_use, ' '),
+                '/',
+                str(lab[total_string]).ljust(maxlen_tot, ' ') )
 
 def main():
     data = getJsonFromEWS(ews_url)
